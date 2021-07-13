@@ -1,0 +1,84 @@
+.exercises-hint{
+    color: plum;
+}
+
+
+.calculator-msg{ /* informing that calculator needed */
+    color:rgb(170, 57, 72);
+}
+
+.problems-note{ /* prompt; ex. "Problems 2–4 refer to the following:" */
+    color: gray;
+    font-style: italic;
+}
+
+.problem-number{ /* indent for exercise #s */
+    float: left;
+    color: plum;
+}
+
+.problem-number-inline{ /* indent for inline exercise #s */
+    float: left;
+    color: plum;
+    margin-right: 5%;
+}
+
+.problem-body{
+    margin-left: 5%;
+}
+
+.problem-step{ /* commentary for problem */
+    text-align: right;
+}
+
+.mcq-option{ /* answer choice tfor  mcq exercise */
+    margin-left: 5%;
+    font-size: 25px;
+}
+
+.problems-left-column{ /* left column for exercises */
+    float:left; 
+    width: 50%; 
+    padding-right: 2%; 
+    position: relative; 
+    z-index: 1;
+}
+
+.problems-right-column{ /* right column for exercises */
+    float:right; 
+    width: 50%; 
+    padding-left: 2%; 
+    position: relative; 
+    z-index: 1;
+}
+
+.box-solution{ /* box around the problem for solution pages */
+    border: 10px solid rgb(96, 150, 182);
+    padding: 5% 2% 5% 0.2%;
+}
+
+.box-solution__probem{
+    padding-right: 20%;
+}
+
+.box-solution__image-panel{
+    position: relative;
+    margin-top: -2%;
+}
+
+.box-solution__image{
+    float:right;
+    max-width: 500px;
+}
+
+.exercise-solution{
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+
+.solution-text{
+    color: rgb(147, 98, 151);
+    text-decoration: underline;
+    padding-right: 0.5%;
+}
+

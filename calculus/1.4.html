@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html>
+    <!--Keep these scripts at the top because if they're placed at the bottom then math won't display correctly.-->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script id="AMSmath" src="TeX/AMSmath.js"></script>
+    <script src="../js/mathjax-config.js" ></script>
+    <script type="text/javascript" id="MathJax-script" 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <head>
+        <link rel="stylesheet" href="../css/hamburger-menu.css">
+        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="../css/notes-style.css">
+        <link rel="stylesheet" href="../css/calculus/1.4.css">
+        <title> 1.4 — Determining Continuity </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Valerie">
+    </head>
+    <!--section tabs-->
+    <nav class="tab">
+        <span class="tab-button-background"> <a href="1.3.html" class="tab-button"> < Previous Section </a> </span>
+        <span class="tab-button-background"> <a class="tab-button"> Notes </a> </span>
+        <span class="tab-button-background"> <a href="1.4-exercises.html" class="tab-button"> Exercises </a> </span>
+        <span class="tab-button-background"> <a href="1.5.html" class="tab-button"> Next Section > </a> </span>
+        <!--hamburger menu button-->
+        <span class="menu-button__background" style="text-align: left;">
+            <div class="menu-btn">
+                <div class="menu-btn__burger">
+                </div>
+            </div> 
+        </span>
+    </nav>
+        
+
+    <!--hamburger menu-->
+    <div id="popupMenuItems" class="menu-popup"> 
+        <div class="menu-list">
+            <hr class="menu-hr">
+            <p> 
+                <a class="menu-link" href="../index.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/home-icon.png" class="menu-icon" alt="">
+                        Home 
+                    </div>
+                </a> 
+            </p>
+            <p> 
+                <a class="menu-link" href="../about.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/about.png" class="menu-icon" alt="">
+                        About 
+                    </div>
+                </a> 
+            </p>
+            <p> 
+                <a class="menu-link" href="../faq.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/" class="menu-icon" alt="">
+                        FAQ
+                    </div>
+                </a> 
+            </p>
+            <p> 
+                <a class="menu-link" href="../contact.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/email.png" class="menu-icon" alt="">
+                        Contact
+                    </div>
+                </a> 
+            </p>
+        
+
+            <hr class="menu-hr">
+            <p class="menu-link" style="color: gray;"> COURSES </p>
+            <p> <a class="menu-link" href="algebra.html"> Algebra </a> </p>
+            <p> <a class="menu-link" href="trig.html"> Trigonometry </a> </p>
+            <p> <a class="menu-link" href="calculus.html"> Calculus </a> </p>
+            <p> <a class="menu-link" href="statistics.html"> Statistics </a> </p>
+        </div>
+    </div>
+
+    <body class="background">
+        <!--Section Title-->
+            <h1> 1.4 — Determining Continuity </h1>
+            <!--Section Body-->
+            <section class="background-text">
+                <hr size=6 noshade="true">
+                <div>
+                    <p> 
+                        In this section, we will define continuity and learn how to determine it.
+                        We have briefly discussed the idea of continuity in previous sections, 
+                        but it is appropriate to formally define it using limits and connect the definition to our prior experiences.
+                    </p>
+                    <p>
+                        If a function is continuous at a certain point, then we can trace that portion of the graph 
+                        without lifting our pen; i.e., we could draw it in one step.
+                        Formally, a function \(f(x)\) is continuous at \(x = a\) if \(\lim_{x \to a} f(x) = f(a)\). 
+                        It is important to note, however, that 
+                        \(\lim_{x \to a} f(x)\) may exist, but not equal \(f(a)\). 
+                        This scenario usually arises when a function \(f(x)\) contains a hole 
+                        (formally called a "removable discontinuity") at \(x = a\).
+                    </p>
+                </div>
+
+                <br>
+
+                <!-- table for definition of continuity-->
+                <div class="box-title"> DEFINITION OF CONTINUITY </div>
+                <div class="box">
+                    <p>
+                        If \(\displaystyle \lim_{x \to a} f(x) = f(a)\), then 
+                        \(f(x)\) is continuous at \(x = a\).
+                    </p>
+                </div>
+
+                <br>
+
+                <div>
+                    <!--fig. 1.4-1-->
+                    <div class="fig-1">
+                        <img src="../images/Calculus/1/1.4/1.4-1.jpg" class="fig-1__image" alt="">
+                    </div>
+
+                    <p>
+                        As an example, consider the graph of \(f(x)\), shown in Fig. 1.4-1.
+                    </p>
+
+                    <br>
+                    <p>
+                        From the graph, we observe that \(f(x)\) contains a removable discontinuity at the labeled point \(A(-4, -3)\),
+                        and we note that \(\lim_{x \to -4} f(x) = -3\). 
+                        However, because \(f(-4) \ne -3\) (it is undefined), we conclude that \(f(x)\) is discontinuous at \(x = -4\).
+                        Conversely, at point \(B(2,2)\), we notice that \(\lim_{x \to 2} f(x) = 2\) and \(f(2) = 2\).
+                        Therefore, since \(\lim_{x \to 2} f(x) = f(2)\), the function is continuous at \(x = 2\).
+                        This result is intuitive because, at point \(B\), we can trace the graph without needing to lift our pen.
+                        At point \(C(8, 10)\), which is an endpoint, 
+                        we can establish continuity from the left because \(\lim_{x \to 8^-} f(x) = f(8)\), 
+                        but we cannot establish continuity from the right (we cannot take a right-hand-side limit.)
+                        Therefore, the interval of \(x\)-values for which \(f(x)\) is continuous is 
+                        \[ (-\infty, -4) \cup (-4, 5) \cup(5, 8]. \]
+                        Note that we include \(8\) because it is an endpoint.
+                        For a right endpoint, we understand that "continuous" implies "continuous from the left."  
+                    </p>
+                </div>
+                
+                <br>
+
+                <!-- table for continuity of interval-->
+                <div class="box-title"> THEOREM \(1\): CONTINUITY OVER AN INTERVAL </div>
+                <div class="box">
+                    <p>
+                        If a function \(f(x)\) is continuous at every point in an interval \([a,b]\),
+                        then \(f(x)\) is continuous on that interval.
+                        For the endpoints \(a\) and \(b\), it is implied that \(f(x)\) is continuous from the right and left, respectively.
+                    </p>
+                </div>
+
+                <br>
+
+                <!-- table for confirming continuity-->
+                <div class="steps-title"> STEPS FOR DETERMINING CONTINUITY </div>
+                <div class="steps">
+                    <p>
+                        To determine whether \(f(x)\) is continuous at \(x = a\):
+                        <!--step 1-->
+                        <p>
+                            <span class="list-item"> \((1)\) </span>
+                            Ensure that \(f(x)\) is defined at \(x = a\).
+                        </p>
+                        <!--step 2-->
+                        <p>
+                            <span class="list-item"> \((2)\) </span>
+                            Check the one-sided limits to establish that \(\displaystyle \lim_{x \to a} f(x)\) exists.
+                        </p>
+                        <!--step 3-->
+                        <p>
+                            <span class="list-item"> \((3)\) </span>
+                            Verify that \(\displaystyle \lim_{x \to a} f(x) = f(a)\).
+                        </p>
+                    </p>
+                    <p>
+                        For endpoints, it is sufficient to only consider the appropriate one-sided limit.
+                        If \(a\) is a left endpoint, then \(f(x)\) is continuous at \(x = a\) if \(\displaystyle \lim_{x \to a^+} f(x) = f(a)\).
+                        If \(a\) is a right endpoint, then \(f(x)\) is continuous at \(x = a\) if \(\displaystyle \lim_{x \to a^-} f(x) = f(a)\).
+                    </p>
+                </div>
+
+                <br>
+
+                <!--example 1-->
+                <div class="example-title"> EXAMPLE \(1\) </div>
+                <div class="example">
+                    <!--example 1 problem-->
+                    <div class="example-problem">  
+                        <div class="fig-2">
+                            <!--Ensure that the width of the image is set to 70% for readability. -->
+                            <img src="../images/Calculus/1/1.4/1.4-2.jpg" alt="" class="fig-2__image">
+                        </div>
+                        <p>
+                            Consider Fig. 1.4-2., in which the graph of \(g(x)\) is shown.
+                            Points \(A(-1,8)\), \(B(6,5)\), and \(C(12,5)\) are labeled, with point \(A\) being the location of a jump discontinuity. 
+                            Determine whether \(g(x)\) is continuous at each point.
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggle1()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 1 solution-->
+                <div>
+                    <div id="solution1" class="solution">
+                        <p>
+                            At point \(A\), we notice that \(g(x)\) is undefined.
+                            Thus, \(g(x)\) is not continuous at that point. 
+                        </p>
+                        <p>
+                            At point \(B\), we notice that \(g(6) = 5\). 
+                            We can also verify that 
+                            \[\lim_{x \to 6} g(x) = 5. \]
+                            Therefore, because 
+                            \(\lim_{x \to 6} g(x) = g(6) = 5,\)
+                            we establish that \(f(x)\) is continuous at point \(B\).
+                        </p>
+                        <p>
+                            We notice that point \(C\) is an endpoint. 
+                            We cannot take the right-hand-side limit, 
+                            but we notice that \(\lim_{x \to 12^-} g(x) = g(12) = 5\).
+                            This statement is sufficient to establish that \(g(x)\) is continuous at point \(C\).
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+
+                <div>
+                    <!--fig. 1.4-1-->
+                    <div class="fig-3">
+                        <img src="../images/Calculus/1/1.4/1.4-3.jpg" class="fig-3__image" alt="">
+                    </div>
+                    <p>
+                        Now, let's discuss piecewise functions and algebraically determining continuity.
+                        Consider, for example, the piecewise function \(f\), defined by
+                        \[
+                        f(x)=
+                        \begin{cases}
+                        -3 \cos(x) &x \leq 0 \\[2ex]
+                        2x - 5 &x \gt 0. 
+                        \end{cases} 
+                        \]
+                        In order for \(f(x)\) to be continuous at \(x = 0\), 
+                        \(f(0)\) must be defined and \(\lim_{x \to 0} f(x)\) must equal \(f(0)\).
+                        We notice that \(f(0)\) is defined and equals \(-3 \cos(0) = -3\). 
+                        Now, we determine whether \(\lim_{x \to 0} f(x)\) matches this value, \(-3\).
+
+                        We notice that, as \(x\) approaches \(0\) from the left-hand side, \(f(x)\) approaches \(-3 \cos(0) = -3\).
+                        Furthermore, as \(x\) approaches \(0\) from the right-hand side, \(f(x)\) approaches \(2(0) - 3 = -5\).
+                        Therefore, because the one-sided limits are not equivalent, \(\lim_{x \to 0} f(x)\) does not exist.
+                        Since \(\lim_{x \to 0} f(x) \ne f(0)\), we conclude that \(f(x)\) is discontinuous at \(x = 0\). 
+                        (In this case, \(f(x)\) contains a jump discontinuity at \(x = 0\), as shown in Fig. 1.4-3.)
+                    </p>
+                    
+                </div>
+                    
+                <br>
+
+                <!--example 2-->
+                <div class="example-title"> EXAMPLE \(2\) </div>
+                <div class="example">
+                    <!--example 2 problem-->
+                    <div class="example-problem">
+                        <span>
+                            <ol type="I" class="example-list">
+                                <!--I-->
+                                <li style="padding-left: 20px;">
+                                    Let 
+                                    \(
+                                    \displaystyle f(x)=
+                                    \begin{cases}
+                                    x^2 - 4x &x \lt 2 \\[2ex]
+                                    -2^x &x \geq 2. 
+                                    \end{cases} \)
+                                    <p> Determine whether \(f(x)\) is continuous at \(x = 2\). </p>
+                                </li>
+                                <!--II-->
+                                <li style="padding-left: 20px;">
+                                    Let 
+                                    \(
+                                    \displaystyle g(x)=
+                                    \begin{cases}
+                                    \sin(x) &x \lt \pi/2 \\[2ex]
+                                    0 \, &x \geq \pi/2. 
+                                    \end{cases} \)
+                                    <p> Determine whether \(g(x)\) is continuous at \(x = \pi/2\). </p>
+                                </li>  
+                                <li style="padding-left: 20px;">
+                                    Let 
+                                    \(
+                                    \displaystyle v(x)=
+                                    \begin{cases}
+                                    x^2 + 4 &x \lt -4 \\[2ex]
+                                    2^{-x} + 4 &x \gt -4. 
+                                    \end{cases} \)
+                                </li>
+                            </ol>
+                            <p> Determine whether \(v(x)\) is continuous at \(x = -4\). </p>
+                        </span>
+                    </div>
+                </div>
+                <button onclick="toggle2()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 2 solution-->
+                <div id="solution2" class="solution">
+                    <p> 
+                        <ol type="I" class="example-list">
+                            <li style="padding-left: 20px;">
+                                <p>
+                                    We see that \(f(2)\) is defined and equals \(-4\).
+                                    Now, let's determine whether \(\lim_{x \to 2} f(x)\) matches this value, \(-4\).
+                                    We must check the one-sided limits and establish that they are equivalent.
+                                    We see that, as \(x\) approaches \(2\) from the left (i.e., \(x \lt 2\)), 
+                                    \(f(x)\) approaches \((2)^2 - 4(2) = -4\). 
+                                    Furthermore, as \(x\) approaches \(2\) from the right (i.e., \(x \geq 2\)),
+                                    \(f(x)\) approaches \(-2^2 = -4.\)
+                                </p>
+                                <p>
+                                    Therefore, because the one-sided limits are equivalent and equal to \(-4\), 
+                                    \(\lim_{x \to 2} f(x) = f(2) = -4\). Therefore, \(f(x)\) is continuous at \(x = 2\).
+                                </p>
+                            </li>
+                            <hr size=6 noshade="true">
+                            <li style="padding-left: 20px;">
+                                <p>
+                                    In order for \(g(x)\) to be continuous at \(x = \pi/2\), 
+                                    we must establish that \(g(\pi/2)\) is defined 
+                                    and that \(\lim_{x \to \pi/2} g(x) = g(\pi/2)\). 
+                                </p>
+                                <p>
+                                    We see that \(g(\pi/2) = 0\). 
+                                    Now, checking the one-sided limits, we observe that, 
+                                    as \(x\) approaches \(\pi/2\) from the left (i.e., \(x \lt \pi/2\)), 
+                                    \(g(x)\) approaches \(\sin(\pi/2) = 1\).
+                                    Furthermore, as \(x\) approaches \(\pi/2\) from the right (i.e., \(x \gt \pi/2\)), 
+                                    \(g(x)\) approaches \(0\).
+                                </p>
+                                <p>
+                                    Because the one-sided limits are not equivalent, \(\lim_{x \to \pi/2} g(x)\) does not exist.
+                                    Therefore, \(g(x)\) is not continuous at \(x = \pi/2\).
+                                </p>
+                            </li>   
+                            <hr size=6 noshade="true">
+                            <li style="padding-left: 20px;">
+                                <p>
+                                    We notice that \(v(x)\) is not defined at \(x = -4\).
+                                    Therefore, \(v(x)\) is not continuous at \(x = -4\).
+                                </p>
+                            </li>
+                        </ol>
+                    </p>
+                </div>
+
+                <br>
+                <br>
+
+                <!--example 3-->
+                <div class="example-title"> EXAMPLE \(3\) </div>
+                <div class="example">
+                    <!--example 3 problem-->
+                    <div style="margin-left:5%; padding-top: 5%; padding-bottom: 5%;">
+                        <p>
+                            Let 
+                            \(
+                            \displaystyle f(x)=
+                            \begin{cases}
+                            kx + 4 &x \leq 3 \\[2ex]
+                            2k - 5 &x \gt 3. 
+                            \end{cases} \)
+                            <p></p>
+                            Find the values of \(k\) for which \(f(x)\) is continuous at \(x = 3\).
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggle3()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 3 solution-->
+                <div id="solution3" class="solution">
+                    <p> 
+                        For this problem, we notice that \(f(3) = 3k + 4\). 
+                        Therefore, \(\lim_{x \to 3} f(x)\) must exist and match this value, 
+                        equaling \(f(3) = 3k + 4\), 
+                        in order for \(f(x)\) to be continuous at \(x = 3\).
+                        Now, we will take the one-sided limits and set them equal to each other, and verify that they equal \(f(3)\).
+                        \[
+                        \begin{aligned}
+                        \lim_{x \to 3^-} f(x) &= 3k + 4. \\
+                        \lim_{x \to 3^+} f(x) &= 2k - 5. \\
+                        \end{aligned}
+                        \]
+                        \[ 3k + 4 = 2k - 5 \implies k = -9.\]
+                    </p>
+                    <p>
+                        Plugging in \(-9\) for \(k\), we see that \(f(3) = 3(-9) + 4 = -23\). 
+                        Furthermore, we verify that \(\lim_{x \to 3} f(x) = -23\), which matches the value of \(f(3)\).
+                        Because of this agreement, we conclude that, for \(k = -9\), \(f(x)\) is continuous at \(x = 3\). 
+                    </p>
+                </div>
+
+                <br>
+                <br>
+                
+                <!--example 4-->
+                <div class="example-title"> EXAMPLE \(4\) </div>
+                <div class="example">
+                    <!--example 4 problem-->
+                    <div class="example-problem">  
+                        Let 
+                        \(
+                        \displaystyle f(x)=
+                        \begin{cases}
+                        3k x^3 + 2k^2 x + 15 &x \lt 1 \\[2ex]
+                        8kx - 18k x^2 &x \geq 1. 
+                        \end{cases} \)
+                        <p> Find the values of \(k\) for which \(f(x)\) is continuous at \(x = 1\). </p>  
+                    </div>
+                </div>
+                <div>
+                    <button onclick="toggle4()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                    <!--example 4 solution-->
+                    <div id="solution4" class="solution">
+                        <p> 
+                            For this problem, we notice that 
+                            \[ 
+                            \begin{aligned}
+                            f(1) 
+                            &= 8k(1) - 18k(1)^2 \\
+                            &= 8k - 18k \\
+                            &= -10k. \\
+                            \end{aligned}
+                            \]
+                            Therefore, in order for \(f(x)\) to be continuous at \(x = 1\), 
+                            \(\lim_{x \to 1} f(x)\) must equal \(-10k\).
+                        </p>
+                        <p>
+                            To evaluate the limit, we will consider the one-sided limits and set them equal to each other.
+                            For the left-hand-side limit (\(x \lt 1\)), we get 
+                            \[ 
+                            \begin{aligned}
+                            \lim_{x \to 1^-} f(x) 
+                            &= 3k(1)^3 + 2k^2(1) + 15 \\
+                            &= 2k^2 + 3k + 15. \\
+                            \end{aligned}
+                            \]
+                            For the right-hand-side limit (\(x \gt 1\)), we get 
+                            \[ 
+                            \begin{aligned}
+                            \lim_{x \to 1^+} f(x) 
+                            &= 8k(1) - 18k(1)^2 \\
+                            &= 8k - 18k \\
+                            &= -10k. \\
+                            \end{aligned}
+                            \]
+                            Setting these one-sided limits equal to each other and solving for \(k\) give 
+                            \[ 
+                            \begin{aligned}
+                            2k^2 + 3k + 15 &= -10k \\
+                            2k^2 + 13k + 15 &= 0
+                            \end{aligned}
+                            \]
+                            \[k = -5 \quad \textrm{and} \quad k = -\frac{3}{2}.\]
+                        </p>
+                        <p>
+                            Therefore, \(k = -5\) and \(\displaystyle k = -\frac{3}{2}\) permit \(f(x)\) to be continuous at \(x = 1\).
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--continuity properties-->
+                <div>
+                    <p>
+                        We can utilize limit properties, discussed in 
+                        <a href="1.3.html" style="color:plum">1.3</a>,
+                        to prove various continuity properties. 
+                        We can show that if \(f(x)\) and \(g(x)\) are continuous at \(x = a\), 
+                        then \((f + g)(x)\), \((f - g)(x)\), \((fg)(x)\) , and (for \(g(x) \ne 0\)) \((f/g)(x)\)  will all be continuous at \(x = a\).  
+                        <!--PROOF (f + g)(x), (f - g)(x), (fg)(x) and (f/g)(x) continuous-->
+                    <p>
+                        <!--proof (f + g)(x) continuous-->
+                        <span class="proof">PROOF</span>
+                        If \(f(x)\) and \(g(x)\) are both continuous at \(x = a\), 
+                        then \(\lim_{x \to a} f(x)\) and \(\lim_{x \to a} g(x)\) exist
+                        and equal \(f(a)\) and \(g(a)\), respectively. 
+                        Therefore, 
+                        \[ 
+                        \begin{aligned}
+                        \lim_{x \to a} \left(f + g \right)(x)
+                        &= \lim_{x \to a} \left[f(x) + g(x) \right] \\
+                        &= \lim_{x \to a} f(x) + \lim_{x \to a} g(x) \\
+                        &= f(a) + g(a). 
+                        \end{aligned}
+                        \]
+                        \((f + g)(a)\) is continuous if \((f + g)(a)\) is defined and \(\lim_{x \to a} \left(f + g \right)(x) = (f + g)(a)\).
+                        Because these conditions are satisfied, we have established that \((f + g)(x)\) is continuous at \(x = a\).
+                        \[\tag*{$\blacksquare$}\]
+                    </p>
+                    <p>
+                        Similarly,
+                        <!--proof (f - g)(x) continuous-->
+                        \[ 
+                        \begin{aligned}
+                        \lim_{x \to a} \left(f - g \right)(x)
+                        &= \lim_{x \to a} \left[f(x) - g(x) \right] \\
+                        &= \lim_{x \to a} f(x) - \lim_{x \to a} g(x) \\
+                        &= f(a) - g(a). \\
+                        \end{aligned} \\
+                        \]
+                        \[ 
+                        \therefore (f - g)(x) \, \, \textrm{is continuous at} \, \, x = a.
+                        \]
+                        \[\tag*{$\blacksquare$}\]
+                        <!--proof (fg)(x) continuous-->
+                        \[ 
+                        \begin{aligned}
+                        \lim_{x \to a} \left(fg \right)(x)
+                        &= \lim_{x \to a} \left[f(x) \cdot g(x) \right] \\
+                        &= \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x) \\
+                        &= f(a) \cdot g(a). \\
+                        \end{aligned} \\
+                        \]
+                        \[ 
+                        \therefore (fg)(x) \, \, \textrm{is continuous at} \, \, x = a.
+                        \]
+                        \[\tag*{$\blacksquare$}\]
+                        <!--proof (f/g)(x) continuous-->
+                        \[ 
+                        \begin{aligned}
+                        \lim_{x \to a} \left(\tfrac{f}{g}\right)(x)
+                        &= \lim_{x \to a} \frac{f(x)}{g(x)}, \lim_{x \to a} g(x) \ne 0 \\
+                        &= \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)} \\
+                        &= \frac{f(a)}{g(a)}. \\
+                        \end{aligned} \\
+                        \]
+                        \[ 
+                        \therefore \left(\tfrac{f}{g}\right)(x) \, \, \textrm{is continuous at} \, \, x = a, 
+                        \, \textrm{provided that} \, \, g(a) \ne 0.
+                        \]
+                        \[\tag*{$\blacksquare$}\]
+                    </p>
+                </div>
+
+                <br>
+
+                <!-- theorem 2 (table for continuity of combinations of f and g) -->
+                <div class="box-title"> THEOREM \(2\): CONTINUITY OF COMBINATIONS OF FUNCTIONS </div>
+                <div class="box">
+                    <p>
+                        If \(f(x)\) and \(g(x)\) are both continuous at \(x = a\), 
+                        then the following combinations of \(f(x)\) and \(g(x)\) are also continuous at \(x = a\).
+                    </p>
+                    <div class="example-list" style="position: static;">
+                        <ol type="I">
+                            <li style="padding-left: 20px;">
+                                \((f + g)(x)\)
+                            </li>  
+                            <li style="padding-left: 20px;">
+                                \((f - g)(x)\)
+                            </li> 
+                            <li style="padding-left: 20px;">
+                                \((fg)(x)\)
+                            </li> 
+                            <li style="padding-left: 20px;">
+                                \((f/g)(x)\)
+                            </li> 
+                        </ol>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--continuity of polynomials and rational functions-->
+                <div>
+                    <p>
+                        <!--proof polynomials continuous-->
+                        <p> 
+                            Using these limit properties, we can formally justify a fact we know from prior experience: 
+                            polynomials are continuous for all real numbers. 
+                        </p>
+                        <span class="proof">PROOF</span>
+                        
+                        If \(p(x)\) is a polynomial, then it is in the form 
+                        \[ a_1 x^n + a_2 x^{n - 1} + a_3 x^{n - 2} + \cdots + a_{n - 1} x + a_n, \]
+                        where \(\left\{a_1, a_2, a_3, \dots, a_n\right\}\) is a set of constants.
+                        Therefore, if \(\lim_{x \to a} p(x) = p(a)\) for \(-\infty \lt a \lt \infty\), then 
+                        we can establish that \(p(x)\) is continuous for all \(x\).
+                        Taking the limit, we get 
+                        \[
+                        \begin{aligned}
+                        \lim_{x \to a} \left(a_1 x^n + a_2 x^{n - 1} + a_3 x^{n - 2} + \cdots + a_{n - 1} x + a_n\right) \\
+                        = \lim_{x \to a} \left(a_1 x^n \right) + \lim_{x \to a} \left(a_2 x^{n - 1} \right) + 
+                        \lim_{x \to a} \left(a_3 x^{n - 2} \right) + \cdots + \lim_{x \to a} \left(a_{n - 1} x \right) + \lim_{x \to a} \left(a_n  \right). \\
+                        \end{aligned}
+                        \]
+                        <p style="text-align: right;"> \((1)\) </p>
+                        Recall the property that \(\displaystyle \lim_{x \to a} cf(x) = c \lim_{x \to a} f(x)\), where \(c\) is a constant. 
+                        Additionally, \(\displaystyle \lim_{x \to a} x = a\) and 
+                        \(\displaystyle \lim_{x \to a} f(x) g(x) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\),
+                        given that \(f(x)\) and \(g(x)\) are both continuous at \(x = a\) (Theorem \(2\), III.).
+                        We know that \(f(x) = x\) is continuous for all \(x\). Therefore, we see that 
+                        \[
+                        \begin{aligned}
+                        \lim_{x \to a} \left(a_1 x^n \right) &= a_1 \lim_{x \to a} \left( x^n \right) \\
+                        &= a_1 \lim_{x \to a} \Big(\underbrace{x \cdot x \cdot x \cdots \cdot x}_{n \, \textrm{times}} \Big) \\
+                        &= a_1 \underbrace{\lim_{x \to a} x \cdot \lim_{x \to a} x \cdots \cdot \lim_{x \to a} x}_{n \, \textrm{times}}, \\
+                        &= a_1 \underbrace{a \cdot a \cdots \cdot a }_{n \, \textrm{times}} \\
+                        &= a_1 a^n,
+                        \end{aligned}
+                        \]
+                        and this pattern is applicable to every term of the polynomial.
+                        <p style="text-align: right;"> \((2)\) </p>
+                        Therefore, 
+                        \[\lim_{x \to a} p(x) = p(a),\]
+                        which states that \(p(x)\) is continuous for all \(x\).
+                        <p style="text-align: right;"> \((3)\) </p>
+                        \[\tag*{$\blacksquare$}\]
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        Now that we have proven that polynomials are continuous, we can establish continuity for rational functions in their respective domains. 
+                        Rational functions are composed of a quotient of polynomials in the form \(p(x)/q(x)\).
+                        We understand that if \(p(x)\) and \(q(x)\) are both continuous, then the quotient \(p(x)/q(x)\) is also continuous,
+                        provided that \(q(x) \ne 0\) (Theorem \(2\), IV.).
+                    </p>
+                </div>
+
+                <br>
+
+                <!--example 5-->
+                <div class="example-title"> EXAMPLE \(5\) </div>
+                <div class="example">
+                    <!--example 5 problem-->
+                    <div class="example-problem">  
+                        <p>
+                            For each of I.–III., determine the intervals on which the function is continuous.
+                        </p>
+                        <ol type="I" class="example-list">
+                            <!--I-->
+                            <li style="padding-left: 20px;">
+                                \(f(x) = x^4 - 13x^2 - 8\)
+                            </li>
+                            <!--II-->
+                            <li style="padding-left: 20px;">
+                                \(\displaystyle g(x) = \frac{x^2 - 4x + 5}{(x - 9)(x - 7)}\)
+                            </li>  
+                            <li style="padding-left: 20px;">
+                                \(\displaystyle h(x) = \frac{8 - x}{4 + x}\)
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div>
+                    <button onclick="toggle5()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                    <!--example 5 solution-->
+                    <div id="solution5" class="solution">
+                        <ol type="I" class="example-list">
+                            <li style="padding-left: 20px;">
+                                <p>
+                                    \(f(x)\) is a fourth-degree polynomial, which is continuous for all \(x\).
+                                    Therefore, the interval is \((-\infty, \infty)\).
+                                </p>
+                            </li>
+                            <hr size=6 noshade="true">
+                            <li style="padding-left: 20px;">
+                                <p>
+                                    \(g(x)\) is a rational function, which is continuous for all \(x\) for which the denominator does not equal \(0\).
+                                    In this case, \(x = 7\) and \(x = 9\) make the denominator of \(g(x)\) equal \(0\), so we exclude them.
+                                    Thus, the interval of continuity is \((-\infty, 7) \cup (7, \infty)\).
+                                </p>
+                            </li>   
+                            <hr size=6 noshade="true">
+                            <li style="padding-left: 20px;">
+                                <p>
+                                    We notice that, for \(x = -4\), the denominator of \(h(x)\) equals \(0\).
+                                    Thus, the interval of continuity is all real numbers except \(x = -4\),
+                                    \((-\infty, -4) \cup (-4, \infty)\).
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <br>
+
+                <div>
+                    <p>
+                        Let's now review the continuity of key functions.
+                        We have already established that polynomials are continuous for all real numbers
+                        and that rational functions, in the form \(p(x)/q(x)\), are continuous for \(q(x) \ne 0\).
+                        The continuity of various other functions is given by the following table.
+                        The theme with all of these functions is that they are continuous in their domains.
+                    </p>
+                </div>
+
+                <br>
+
+                <!-- continuity for various functions -->
+                <div class="box-title"> CONTINUITY OF VARIOUS FUNCTIONS </div>
+                <div class="box">
+                    <div class="continuity-list">
+                        <span class="continuity-list__left">
+                            <p style="opacity: 0;">.</p>
+                        </span>
+                        <span class="continuity-list__right">
+                            <p class="continuity-list__continuous-for"> <u>CONTINUOUS FOR</u> </p>
+                        </span>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            POLYNOMIALS
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            RATIONAL FUNCTIONS
+                                            \(\displaystyle \frac{p(x)}{q(x)}\)
+                                            <span style="float: right; width:37%"> \(q(x) \ne 0\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\sin(x)\)
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\cos(x)\)
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\tan(x)\)
+                                            <span style="float: right; width:37%"> \(\displaystyle x \ne \frac{\pi}{2} \pm n \pi, n = 0, \pm 1, \pm 2, \dots\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\csc(x)\)
+                                            <span style="float: right; width:37%"> \(\displaystyle x \ne n \pi, n = 0, \pm 1, \pm 2, \dots\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\sec(x)\)
+                                            <span style="float: right; width:37%"> \(\displaystyle x \ne \frac{\pi}{2} \pm n \pi, n = 0, \pm 1, \pm 2, \dots\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\cot(x)\)
+                                            <span style="float: right; width:37%"> \(\displaystyle x \ne n \pi, n = 0, \pm 1, \pm 2, \dots\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(b^x, b \gt 0 \;\) and \(\;b \ne 1\)
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\log_b(x), b \gt 0 \;\) and \(\;b \ne 1\)
+                                            <span style="float: right; width:37%"> \(\displaystyle x \gt 0\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\sqrt[n]{x}, n\) odd
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\sqrt[n]{x}, n\) even
+                                            <span style="float: right; width:37%"> \(x \geq 0\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(|x|\)
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\sin^{-1}(x)\)
+                                            <span style="float: right; width:37%"> \(-1 \leq x \leq 1\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\cos^{-1}(x)\)
+                                            <span style="float: right; width:37%"> \(-1 \leq x \leq 1\) </span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            \(\tan^{-1}(x)\)
+                                            <span style="float: right; width:37%"> \(-\infty \lt x \lt \infty\) </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        <p style="text-align: center;">
+                            (You can download a PDF file of this table here.)
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+                <!--continuity of combinations of functions and composite functions-->
+                <div>
+                    <p>
+                        Let's now determine the continuity of other functions.
+                        We will work with combinations of functions, whose properties of continuity we established with Theorem \(2\), 
+                        and composite functions, which are in the form \(f(g(x))\).
+                        For the continuity of this composite function at \(x = a\), we must establish that 
+                        \[\lim_{x \to a} f(g(x)) = f(g(a)).\]
+                        If \(g(x)\) is continuous at \(x = a\) and \(f(x)\) is continuous at \(x = g(a)\), then 
+                        \[\lim_{x \to a} f(g(x)) = f \left(\lim_{x \to a} g(x)\right) = f(g(a)),\]
+                        which satisfies our criteria for continuity.
+                    </p>
+
+                    <br>
+
+                    <!--theorem 3 (continuity of (f o g)(x))-->
+                    <div class="box-title"> THEOREM \(3\): CONTINUITY OF COMPOSITE FUNCTIONS </div>
+                    <div class="box">
+                        <p>
+                            If \(g(x)\) is continuous at \(x = a\) and \(f(x)\) is continuous at \(x = g(a)\),
+                            then \(f(g(x))\) is continuous at \(x = a\).
+                        </p>
+                    </div>
+
+                    <br>
+
+                    <p>
+                        Consider, as an example, the function \(h(x) = \ln(x - 2)\). 
+                        This function is in the form \(f(g(x))\), where \(f(x) = \ln(x)\) and \(g(x) = x - 2\).
+                        We know that \(\ln(x)\) is continuous for \(x \gt 0\) (logarithms are only defined for positive inputs.)
+                        Therefore, the nested function, \(g(x) = x - 2\), must follow this restriction and be greater than \(0\).
+                        \[
+                        \begin{aligned}
+                        g(x) \gt 0 \\
+                        x - 2 \gt 0 \\
+                        x \gt 2. \\
+                        \end{aligned}
+                        \] 
+                        \(g(x) = x - 2\) is continuous for all \(x\), and \(f(x) = \ln(g(x))\) is continuous for \(g(x) \gt 0\), 
+                        so \(\ln(x - 2)\) is continuous for all \(x \gt 2\), as given by Theorem \(3\).
+                    </p>
+                </div>
+
+                <br>
+
+                <!--example 6-->
+                <div class="example-title"> EXAMPLE \(6\) </div>
+                <div class="example">
+                    <!--example 6 problem-->
+                    <div class="example-problem">  
+                        <div style="margin-left:5%;">
+                            <p>
+                                For each of I.–VI., determine the intervals on which the function is continuous.
+                            </p>
+                            <div class="left-list">
+                                <ol type="I" class="example-list">
+                                    <!--I-->
+                                    <li style="padding-left: 20px;">
+                                        \(f(x) = \sin(x) + x^2\)
+                                    </li>
+                                    <!--II-->
+                                    <li style="padding-left: 20px;">
+                                        \(\displaystyle g(x) = \frac{\cos(x) + x}{\ln(x)}\)
+                                    </li>  
+                                    <!--III-->
+                                    <li style="padding-left: 20px;">
+                                        \(\displaystyle h(x) = \frac{\tan(x)}{x + 2}\)
+                                    </li>
+                                </ol>
+                            </div>
+                            <div>
+                                <ol type="I" start="4" class="example-list">
+                                    <!--IV-->
+                                    <li style="padding-left: 20px;">
+                                        \(\displaystyle i(x) = x^4 \sin(x) \)
+                                    </li>
+                                    <!--V-->
+                                    <li style="padding-left: 20px;">
+                                        \(\displaystyle j(x) = e^{\sqrt{3 - x}}\)
+                                    </li> 
+                                    <!--VI--> 
+                                    <li style="padding-left: 20px;">
+                                        \(\displaystyle k(x) = \frac{x\sec(x)}{\sqrt{x - 5}}\)
+                                    </li>
+                                </ol>
+                            </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggle6()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 6 solution-->
+                <div id="solution6" class="solution">
+                    <ol type="I" class="example-list">
+                        <li style="padding-left: 20px;">
+                            <p>
+                                \(\sin(x)\) and \(x^2\) are both continuous for all \(x\).
+                                Therefore, by I. of Theorem \(2\), the sum \(f(x) = \sin(x) + x^2\) is also continuous for all \(x\).
+                            </p>
+                        </li>
+                        <hr size=6 noshade="true">
+                        <li style="padding-left: 20px;">
+                            <p>
+                                The numerator of 
+                                \(g(x)\), \(\cos(x) + x\), 
+                                is a sum of two continuous functions \(\cos(x)\) and \(x\) and is thus continuous for all \(x\) (I. of Theorem \(2\)).
+                                Conversely, the denominator, \(\ln(x)\), is only continuous for \(x \gt 0\).
+                                Therefore, for \(x \gt 0\), the numerator and denominator are both continuous—and 
+                                by IV. of Theorem \(2\), so is \(g(x)\).
+                            </p>
+                        </li>   
+                        <hr size=6 noshade="true">
+                        <li style="padding-left: 20px;">
+                            <p>
+                                We seek to find the values of \(x\) for which the numerator and denominator of \(h(x)\) are both continuous 
+                                (and the denominator \(\ne 0\)) since
+                                we can then establish continuity for \(h(x)\) by property IV. of Theorem \(2\).
+                                We know that \(\tan(x)\) is continuous for all \(x\) except \(\pm \pi/2, \pm 3 \pi/2, \pm 5 \pi/2, \dots\).
+                                We also understand that, at \(x = -2\), the denominator of \(h(x)\) evaluates to \(0\).
+                                Therefore, the values of \(x\) for which \(h(x)\) is discontinuous include 
+                                \(x = -2\) and \(x = \pi/2 \pm \pi n, n = 0, \pm 1, \pm 2, \dots\).
+                            </p>
+                        </li>
+                        <hr size=6 noshade="true">
+                        <li style="padding-left: 20px;">
+                            <p>
+                                \(x^4\) and \(\sin(x)\) are both continuous for all \(x\).
+                                Therefore, by III. of Theorem \(2\), the product \(i(x) = x^4 \sin(x)\) is also continuous for all \(x\).
+                            </p>
+                        </li>
+                        <hr size=6 noshade="true">
+                        <li style="padding-left: 20px;">
+                            <p>
+                                We understand that \(e^x\) is continuous for all \(x\).
+                                In this case, however, we have the composite function \(e^{\sqrt{3 - x}}\), 
+                                and \(\sqrt{3 - x}\) is only continuous for \(x \leq 3\).
+                                Therefore, \(e^{\sqrt{3 - x}}\) is continuous for all \(x \leq 3\).
+                            </p>
+                        </li>
+                        <hr size=6 noshade="true">
+                        <li style="padding-left: 20px;">
+                            <p>
+                                Rewriting \(k(x)\) as \(\displaystyle \frac{x}{\cos(x) \sqrt{x - 5}}\),
+                                we want to find the values of \(x\) for which the numerator and denominator are both continuous 
+                                (and for which the denominator is not \(0\), of course).
+                                We notice that the numerator, \(x\), is continuous for all values of \(x\).
+                                On the denominator, \(\cos(x)\) is also continuous for all \(x\), but it cannot equal \(0\), 
+                                which it does at \(x = \pm \pi/2, \pm 3 \pi/2, \pm 5 \pi/2, \dots\).
+                                We will therefore exclude those points. 
+                                \(\sqrt{x - 5}\) is continuous and positive for all \(x \gt 5\), 
+                                so—for \(k(x)\) to be continuous—we are confined to 
+                                \(x\)-values greater than \(5\) such that \(\cos(x) \ne 0\).
+                                Thus, \(k(x)\) is continuous for \(x \gt 5, x \ne  \frac{5\pi}{2} + \pi n, n = 0, \pm 1, \pm 2, \dots\).
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+
+                <br>
+                <br>
+
+                <!--section summary-->
+                <div>
+                    <p>
+                        <u> SECTION SUMMARY </u>
+                        <ul>
+                            <li style="padding-bottom: 20px;"> 
+                                If \(\displaystyle \lim_{x \to a} f(x) = f(a)\), then \(f(x)\) is continuous at \(x = a\).  
+                            </li>
+                            <li style="padding-top: 20px; padding-bottom: 20px;">
+                                To determine whether \(f(x)\) is continuous at \(a\), 
+                                \((1)\) ensure that \(f(a)\) is defined, \((2)\) find \(\displaystyle \lim_{x \to a} f(x)\), 
+                                and \((3)\) verify that \(\displaystyle \lim_{x \to a} f(x) = f(a)\).
+                            </li>
+                            <li style="padding-top: 20px; padding-bottom: 20px;">
+                                \(f(x)\) is continuous over an interval if \(f(x)\) is continuous at all values of \(x\) inside the interval. 
+                            </li>
+                            <li style="padding-top: 20px; padding-bottom: 20px;">
+                                To check the continuity at an endpoint \(x = a\), 
+                                first ensure that \(f(a)\) is defined.
+                                If \(a\) is a left endpoint, verify that \(\displaystyle \lim_{x \to a^+} f(x) = f(a)\).
+                                If \(a\) is a right endpoint, verify that  \(\displaystyle \lim_{x \to a^-} f(x) = f(a)\).
+                            </li>
+                            <li style="padding-top: 20px; padding-bottom: 20px;">
+                                Polynomials are continuous for all real numbers. Rational functions are continuous in their domains.
+                            </li>
+                            <li style="padding-top: 20px; padding-bottom: 20px;">
+                                If \(f(x)\) and \(g(x)\) are both continuous at \(x = a\), then \((f + g)(x)\), \((f - g)(x)\), \((fg)(x)\), 
+                                and (for \(g \ne 0\)) \((f/g)(x)\) 
+                                are all continuous at \(x = a\).
+                            </li>
+                            <li style="padding-top: 20px; padding-bottom: 20px;">
+                                If \(g(x)\) is continuous at \(x = a\) and \(f(x)\) is continuous at \(x = g(a)\),
+                                then \(f(g(x))\) is continuous at \(x = a\).
+                            </li>
+                        </ul>    
+                    </p>
+                </div>
+            </section>
+    </body>
+    <script src="../js/hamburger-menu.js"></script>
+    <script src="../js/toggle-solutions.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</html>
