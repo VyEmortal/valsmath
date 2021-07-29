@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script id="AMSmath" src="TeX/AMSmath.js"></script>
+    <script src="../js/mathjax-config.js" ></script>
+    <script type="text/javascript" id="MathJax-script" 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <script type="text/javascript" id="MathJax-script" 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <head>
+        <link rel="stylesheet" href="../css/hamburger-menu.css">
+        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="../css/notes-style.css">
+        <link rel="stylesheet" href="../css/calculus/5.1.css">
+        <title> 3.2 — Indeterminate Forms and L'Hôpital's Rule </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Valerie">
+    </head>
+    <!--section tabs-->
+    <nav class="tab">
+        <span class="tab-button-background"> <a href="3.1.html" class="tab-button"> < Previous Section </a> </span>
+        <span class="tab-button-background"> <a href="3.2.html" class="tab-button"> Notes </a> </span>
+        <span class="tab-button-background"> <a href="3.2-exercises.html" class="tab-button"> Exercises </a> </span>
+        <span class="tab-button-background"> <a href="3.3.html" class="tab-button"> Next Section > </a> </span>
+        <!--hamburger menu button-->
+        <span class="menu-button__background" style="text-align: left;">
+            <div class="menu-btn">
+                <div class="menu-btn__burger">
+                </div>
+            </div> 
+        </span>
+    </nav>
+        
+
+    <!--hamburger menu-->
+    <div id="popupMenuItems" class="menu-popup"> 
+        <div class="menu-list">
+            <hr class="menu-hr">
+            <p> 
+                <a class="menu-link" href="../index.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/home-icon.png" class="menu-icon" alt="">
+                        Home 
+                    </div>
+                </a> 
+            </p>
+            <p> 
+                <a class="menu-link" href="../about.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/about.png" class="menu-icon" alt="">
+                        About 
+                    </div>
+                </a> 
+            </p>
+            <p> 
+                <a class="menu-link" href="../faq.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/" class="menu-icon" alt="">
+                        FAQ
+                    </div>
+                </a> 
+            </p>
+            <p> 
+                <a class="menu-link" href="../contact.html"> 
+                    <div class="menu-item"> 
+                        <img src="../images/icons/email.png" class="menu-icon" alt="">
+                        Contact
+                    </div>
+                </a> 
+            </p>
+        
+
+            <hr class="menu-hr">
+            <p class="menu-link" style="color: gray;"> COURSES </p>
+            <p> <a class="menu-link" href="algebra.html"> Algebra </a> </p>
+            <p> <a class="menu-link" href="trig.html"> Trigonometry </a> </p>
+            <p> <a class="menu-link" href="calculus.html"> Calculus </a> </p>
+            <p> <a class="menu-link" href="statistics.html"> Statistics </a> </p>
+        </div>
+    </div>
+
+    <body class="background">
+        <!--Section Title-->
+            <h1> 3.2 — Indeterminate Forms and L'Hôpital's Rule </h1>
+            <!--Section Body-->
+            <section class="background-text">
+                <hr size=6 noshade="true">
+                <p>
+                    In this section, we will discuss a tool to evaluate limits in the indeterminate forms
+                    \(0/0\) and \(\pm \infty/\infty.\) 
+                    These forms of limits are considered indeterminate because further analysis is required to determine their behavior.
+                    We will also analyze other indeterminate forms that can be algebraically manipulated to be in those forms.
+                </p>
+
+                <br>
+
+                <p>
+                    In section <a href="1.2.html" style="color: plum;">1.2</a>, we introduced the idea of an indeterminate limit
+                    and utilized algebra to evalute examples of it. 
+                    For example, consider the limit \(\ds \lim_{x \to 3} (x^2 - 9)/(x - 3).\)
+                    We obtain the indeterminate form \(0/0\) if we attempt to perform direct substitution; 
+                    i.e., the numerator and denominator both evaluate to \(0\) if we plug in \(x = 3.\)
+                    However, factoring the numerator as \(\ds \lim_{x \to 3} (x + 3)(x - 3)/(x - 3),\)
+                    the limit becomes \(\ds \lim_{x \to 3} (x + 3) = 6.\)
+                    Algebra permitted us to evaluate this indeterminate limit, 
+                    but there are some examples of indeterminate limits in which the resource of algebraic manipulation is not available.
+                    In this section, we will discuss a systematic tool that permits us to evaluate any limit in the 
+                    indeterminate forms \(0/0\) and \(\pm \infty/\infty\)—L'Hôpital's Rule.
+                </p>
+
+                <br>
+
+                <!-- l'hopital's rule box -->
+                <div class="box-title"> L'HÔPITAL'S RULE </div>
+                <div class="box">
+                    <p>
+                        Let \(f(x)\) and \(g(x)\) be differentiable and \(g'(x) \ne 0\) on an open interval \(I,\) except possibly at \(x = a, a \in I.\) 
+                        If \(\ds \lim_{x \to a} f(x)\) and \(\ds \lim_{x \to a} g(x)\) are both \(0\) or \(\infty,\)
+                        then \(\ds \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}.\) 
+                    </p>
+                </div>
+
+                <br>
+
+                <p>
+                    In words, we are instructed to differentiate the numerator and denominator of a 
+                    limit in an indeterminate form \(0/0\) or \(\pm \infty/\infty,\) and re-evaluate the limit.   
+                    The notations "\(0/0\)" and "\(\pm\infty/\infty\)" 
+                    solely serve as forms to model a quotient of limits, each of which tends to \(0\) or \(\infty.\)
+                    These expressions are meaningless on their own, 
+                    so it is incorrect to state that a limit <i>equals</i> \(0/0\) or \(\infty/\infty.\)
+                    It is also important to note that L'Hôpital's Rule applies for one-sided limits and limits at infinity.
+                </p>
+
+                <br>
+
+                <p>
+                    As an example, consider \(\ds \lim_{x \to 0} \sin(x)/x,\)
+                    which is in the indeterminate form \(0/0.\) 
+                    We have previously presented a geometric argument to verify that this limit equals \(1\)
+                    and used it to prove that \(\ds \sin'(x) = \cos(x).\) 
+                    Using L'Hôpital's Rule, if we differentiate the numerator and denominator, then we obtain 
+                    \[
+                    \ba 
+                    \lim_{x \to 0} \frac{\sin(x)}{x} &= \lim_{x \to 0} \frac{\frac{\dd}{\dd x} \sin(x)}{\frac{\dd}{\dd x} x} \\
+                    &= \lim_{x \to 0} \frac{\cos(x)}{1} \\
+                    &= 1,
+                    \ea 
+                    \]
+                    as anticipated.
+                </p>
+
+                <br>
+
+                <!-- table for indeterminate form 0/0 or infty/infty -->
+                <div class="steps-title"> INDETERMINATE FORMS \(0/0\) AND \(\infty/\infty\) </div>
+                <div class="steps">
+                    <p> 
+                        If \(\ds \lim_{x \to a} \frac{f(x)}{g(x)}\) is in the indeterminate form \(0/0\) or \(\infty/\infty,\)
+                        then:
+                    </p>
+                    <div class="list-item">
+                        <div class="list-number"> \((1)\) </div>
+                        <div class="list-text">
+                            Differentiate \(f(x)\) and \(g(x).\)
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> \((2)\) </div>
+                        <div class="list-text">
+                            Evaluate \(\ds \lim_{x \to a} \frac{f'(x)}{g'(x)}.\)
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> \((3)\) </div>
+                        <div class="list-text">
+                            L'Hôpital's Rule states that 
+                            \(\ds \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)},\)
+                            provided that the conditions are met.
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--example 1-->
+                <div class="example-title"> EXAMPLE \(1\) </div>
+                <div class="example">
+                    <!--example 1 problem-->
+                    <div class="example-problem">  
+                        For each of I.–V., evaluate the limit or state that it does not exist.
+                        <ol type="I" class="example-list">
+                            <!--I-->
+                            <li style="padding-left: 20px;">
+                                \(\ds \lim_{x \to 0} \frac{2x}{\sin(4x)}\)
+                            </li>
+                            <!--II-->
+                            <li style="padding-left: 20px;">
+                                \(\ds \lim_{x \to 1} \frac{\ln(x)}{x - 1}\)
+                            </li>  
+                            <!--III-->
+                            <li style="padding-left: 20px;">
+                                \(\ds \lim_{x \to -2} \frac{x + 2}{2 - 2 \cos(\pi x)}\)
+                            </li>
+                            <!--IV-->
+                            <li style="padding-left: 20px;">
+                                \(\ds \lim_{x \to \infty} \frac{\sqrt{x}}{\ln(x)}\)
+                            </li>
+                            <!--V-->
+                            <li style="padding-left: 20px;">
+                                \(\ds \lim_{x \to 0} |x| \cot(x)\)
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <button onclick="toggle1()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 1 solution-->
+                <div>
+                    <div id="solution1" class="solution">
+                        <ol type="I" class="example-list">
+                            <!--I-->
+                            <li style="padding-left: 20px;">
+                                Because \(2x\) and \(\sin(4x)\) both tend to \(0\) as \(x\) approaches \(0,\)
+                                the limit \(\ds \lim_{x \to 0} 2x/\sin(4x) \) is in a \(0/0\) indeterminate form.
+                                Because both functions are differentiable at \(x = 0,\) we can apply L'Hôpital's Rule—we 
+                                differentiate the numerator and denominator. 
+                                Therefore,
+                                \[
+                                \begin{aligned}
+                                \underbrace{\lim_{x \to 0}\frac{2x}{\sin(4x)}}_{0/0} &= \lim_{x \to 0} \frac{\frac{\dd}{\dd x}(2x)}{\frac{\dd}{\dd x} \sin(4x)} \\
+                                &= \lim_{x \to 0} \frac{2}{4 \cos(4x)} \\
+                                &= \box{\frac{1}{2}.}
+                                \end{aligned}
+                                \]
+
+                            </li>
+                            <hr size=6 noshade="true">
+                            <!--II-->
+                            <li style="padding-left: 20px;">
+                                \(\ln(x)\) and \(x - 1\) both tend to \(0\) as \(x\) approaches \(1.\) 
+                                Therefore, the limit \(\ds \lim_{x \to 1} \ln(x)/(x - 1)\) is in the indeterminate form \(0/0.\)
+                                Because these functions are differentiable at \(x = 1,\) we can apply L'Hôpital's rule:
+                                \[
+                                \begin{aligned}
+                                \underbrace{\lim_{x \to 1}\frac{\ln(x)}{x - 1}}_{0/0} 
+                                &= \lim_{x \to 1} \frac{\frac{\dd}{\dd x} \ln(x)}{\frac{\dd}{\dd x} (x - 1)} \\
+                                &= \lim_{x \to 1} \frac{1/x}{1} \\
+                                &= \box{1.}
+                                \end{aligned}
+                                \]
+                            </li>  
+                            <hr size=6 noshade="true">
+                            <!--III-->
+                            <li style="padding-left: 20px;">
+                                \(x + 2\) and \(2 - 2 \cos(\pi x)\) both approach \(0\) as \(x\) approaches \(-2.\)
+                                Therefore, the limit \(\ds \lim_{x \to -2} (x + 2)/(2 - 2 \cos(\pi x))\) is in the indeterminate form \(0/0.\)
+                                Both functions are differentiable, so we can apply L'Hôpital's rule:
+                                \[
+                                \begin{aligned}
+                                \underbrace{\lim_{x \to -2} \frac{x + 2}{2 - 2 \cos(\pi x)}}_{0/0} 
+                                &= \lim_{x \to -2} \frac{\frac{\dd}{\dd x}(x + 2)}{\frac{\dd}{\dd x}(2 - 2 \cos(\pi x))} \\
+                                &= \lim_{x \to -2} \frac{1}{2 \pi \sin(\pi x)}. \\
+                                \end{aligned}
+                                \]
+                                Notice that \(\ds 1/(2 \pi \sin(\pi x))\) tends to \(1/0\) as \(x\) approaches \(-2.\)
+                                Therefore, the limit does not exist.
+                            </li>
+                            <hr size=6 noshade="true">
+                            <!--IV-->
+                            <li style="padding-left: 20px;">
+                                As \(x\) approaches \(\infty,\) both \(\sqrt{x}\) and \(\ln(x)\) approach \(\infty.\)
+                                Therefore, the limit \(\ds \lim_{x \to \infty} \sqrt{x}/\ln(x)\) is in the indeterminate form \(\infty/\infty.\)
+                                \(\sqrt{x}\) and \(\ln{x}\) for all \(x \gt 0,\) so we can apply L'Hôpital's rule.
+                                \[
+                                \begin{aligned}
+                                \underbrace{\lim_{x \to \infty} \frac{\sqrt{x}}{\ln(x)}}_{\infty/\infty} 
+                                &= \lim_{x \to \infty}\frac{\frac{\dd}{\dd x} \sqrt{x}}{\frac{\dd}{\dd x} \ln(x)} \\
+                                &= \lim_{x \to \infty} \frac{\frac{1}{2\sqrt{x} }}{1/x} \\
+                                &= \lim_{x \to \infty} \frac{x}{2\sqrt{x}} \\
+                                &= \lim_{x \to \infty} \frac{\sqrt{x}}{2} \\
+                                &= \box{\infty.}
+                                \end{aligned}
+                                \]
+                            </li>
+                            <hr size=6 noshade="true">
+                            <!--V-->
+                            <li style="padding-left: 20px;">
+                                To consider the limit of \(|x|\) as \(x\) approaches \(0,\) 
+                                we will rewrite \(|x|\) using a piecewise function.
+                                \[
+                                |x|=
+                                \bc
+                                -x &x \lt 0 \\[2ex]
+                                0 &x = 0 \\[2ex]
+                                x &x \gt 0. 
+                                \ec
+                                \]
+                                Therefore, 
+                                \[
+                                \begin{aligned}
+                                \lim_{x \to 0^-} |x| \cot(x) &= \lim_{x \to 0} -x \cot(x) \\
+                                \lim_{x \to 0^+} |x| \cot(x) &= \lim_{x \to 0} x \cot(x)
+                                \end{aligned}
+                                \]
+                                These one-sided limits must be equivalent in order for \(\ds \lim_{x \to 0} |x| \cot(x)\) to be defined.
+                                Considering the right-hand limit, 
+                                \[
+                                \lim_{x \to 0^+} |x| \cot(x) = \lim_{x \to 0} \frac{x \cos(x)}{\sin(x)},
+                                \]
+                                we notice that it is in the indeterminate form \(0/0.\) 
+                                Therefore, applying L'Hôpital's rule, 
+                                \[
+                                \begin{aligned}
+                                \lim_{x \to 0} \frac{x \cos(x)}{\sin(x)} 
+                                &= \lim_{x \to 0} \frac{\frac{\dd}{\dd x} x \cos(x)}{\frac{\dd}{\dd x} \sin(x)} \\
+                                &= \lim_{x \to 0} \frac{\cos(x) - x \sin(x)}{\cos(x)} \\
+                                &= \frac{\cos(0) - 0 \sin(0)}{\cos(0)} \\
+                                &= 1.
+                                \end{aligned}
+                                \] 
+                                However, the left-hand limit,
+                                \[
+                                \lim_{x \to 0} -\frac{x \cos(x)}{\sin(x)},
+                                \]
+                                is \(-1.\) 
+                                Therefore, because the one-sided limits are not equivalent, the limit does not exist.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <br>
+
+                <p>
+                    It is a common error to confuse the procedure of L'Hôpital's rule with the quotient rule.
+                    L'Hôpital's rule requires that we differentiate the numerator and denominator 
+                    individually—<u>this procedure is NOT the quotient rule</u>.
+                    Do NOT use the quotient rule with L'Hôpital's rule.
+                </p>
+                <p>
+                    Additionally, we may need to use L'Hôpital's rule several times before obtaining a determinate answer.
+                    We may have to perform several iterations if we continue to get a \(0/0\) or \(\pm \infty/\infty\) form.
+                    Therefore, if you use L'Hôpital's rule and still obtain an indeterminate form, 
+                    then continue to use L'Hôpital's rule until you obtain a meaningful answer.
+                </p>
+
+                <br>
+
+                <!--example 2-->
+                <div class="example-title"> EXAMPLE \(2\) </div>
+                <div class="example">
+                    <!--example 2 problem-->
+                    <div class="example-problem">  
+                        Let \(g\) be a twice-differentiable function.
+                        It is known that \(g(0) = 1, g'(0) = 0,\) and \(g''(0) = 5.\) 
+                        <br>
+                        Evaluate \(\ds \lim_{x \to 0} \frac{g(x) - \cos(x)}{x^2}.\)
+                    </div>
+                </div>
+                <button onclick="toggle2()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 2 solution-->
+                <div>
+                    <div id="solution2" class="solution">
+                        <p>
+                            Performing direct substitution, we get 
+                            \[ \underbrace{\frac{g(0) - \cos(0)}{0^2}}_{0/0}.\]
+                            Therefore, because the limit is in the indeterminate form \(0/0,\) we will apply L'Hôpital's Rule.
+                            Differentiating the numerator and denominator gives
+                            \[\lim_{x \to 0} \frac{g'(x) + \sin(x)}{2x},\]
+                            for which direct substitution yields 
+                            \[ \underbrace{\frac{g'(0) - \cos(0)}{2(0)}}_{0/0}.\]
+                            Because the resulting limit is still in the indeterminate form \(0/0,\)
+                            we must use L'Hôpital's Rule again. 
+                            Differentiating the numerator and denominator for the second time produces
+                            \[
+                            \ba
+                            \lim_{x \to 0} \frac{g''(x) + \cos(x)}{2} &= \frac{g''(0) + \cos(0)}{2} \\
+                            &= \frac{5 + 1}{2} \\
+                            &= \box{3.}
+                            \ea
+                            \]
+                        </p>
+                        <p>
+                            This example shows that it may be necessary to use multiple iterations of L'Hôpital's Rule before obtaining a determinate answer.
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+                
+                <!--example 3-->
+                <div class="example-title"> EXAMPLE \(3\) </div>
+                <div class="example">
+                    <!--example 3 problem-->
+                    <div class="example-problem">  
+                        Let \(f\) be a function with derivatives of all orders that satisfies \(f(x) \gt 0\) for all \(x.\)
+                        Let \(k\) be a differentiable function defined by 
+                        \(\ds k(x) = \frac{4x^2 - f(x)^2}{\sin(x - 1)}\) that satisfies \(\ds \lim_{x \to 1} k(x) = 4.\)
+                        It is known that \(\ds \lim_{x \to 1} k(x)\) can be evaluated using L'Hôpital's Rule.
+                        Find \(f(1)\) and \(f'(1).\)
+                    </div>
+                </div>
+                <button onclick="toggle3()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 3 solution-->
+                <div>
+                    <div id="solution3" class="solution">
+                        <p>
+                            Because \(\ds \lim_{x \to 1} \frac{4x^2 - f(x)^2}{\sin(x - 1)}\) can be evaluated using L'Hôpital's Rule,
+                            the limit must be in either of the indeterminate forms \(0/0\) or \(\infty/\infty.\) 
+                            Since the limit of the denominator, \(\ds \lim_{x \to 1} \sin(x - 1),\) is \(0\) when \(x = 1,\) 
+                            the limit must be in the form \(0/0\) (this is one of the forms for which L'Hôpital's Rule is applicable.)
+                            Therefore, because \(k\) is continuous (being differentiable implies being continuous),
+                            \[
+                            \ba
+                            \lim_{x \to 1} \left(4x^2 - f(x)^2 \right) = 4 - f(1)^2 &= 0 \\
+                            \therefore f(1) &= 2. 
+                            \ea
+                            \]
+                            (Note that \(f(x) \gt 0\) for all \(x,\) so we ignore the negative solution \(f(1) = - 2.\))
+                            Now, applying L'Hôpital's Rule, we differentiate the numerator and denominator to get 
+                            \[
+                            \ba
+                            \lim_{x \to 1} \frac{8x - 2f(x)f'(x)}{\cos(x - 1)} = \frac{8 - 2f(1) f'(1)}{\cos(1 - 1)} &= 4\\
+                            8 - 4 f'(1) &= 4 \\
+                            \therefore f'(1) &= 1.
+                            \ea
+                            \]
+
+                            \[
+                            \box{
+                            \ba 
+                            f(1) &=2. \\
+                            f'(1) &= 1. \\
+                            \ea}
+                            \]
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+                
+                <p>
+                    L'Hôpital's Rule is useful for comparing the relative rates of growth or decay of various functions.
+                    Consider two functions, \(f\) and \(g,\)
+                    which are both positive.
+                    In order to determine which function grows faster, 
+                    we can consider the limit \(\ds L = \lim_{x \to \infty} f(x)/g(x).\)
+                    Analyzing this quotient initiates a battle between \(f\) and \(g\):
+                    if \(f(x)\) grows faster than \(g(x),\) then \(L\) will approach infinity.
+                    However, if \(g(x)\) grows faster than \(f(x),\) then \(L\) will approach \(0.\) 
+                    Additionally, if \(L = k,\) where \(k\) is a non-zero constant, then \(f(x)\) and \(g(x)\) grow at the same rate.
+                </p>
+
+                <br>
+
+                <p>
+                    As an example, let us determine which function grows faster: \(f(x) = x^{1/5}\) or \(g(x) = \ln(x).\)
+                    We will consider the limit 
+                    \[L = \lim_{x \to \infty} \frac{f(x)}{g(x)} = \lim_{x \to \infty} \frac{x^{1/5}}{\ln(x)}. \]
+                    We notice that this limit is in the indeterminate form \(0/0,\) so we can apply L'Hôpital's Rule to get
+                    \[
+                    \ba
+                    L &= \lim_{x \to \infty} \frac{\frac{1}{5} x^{-4/5}}{1/x} \\
+                    &= \lim_{x \to \infty} \frac{1}{5}x^{1/5} \\
+                    &= \infty.
+                    \ea
+                    \]
+                    Thus, we conclude that \(f(x) = x^{1/5}\) grows faster than \(g(x) = \ln(x).\)
+                    Both functions are unbounded as \(x\) approaches infinity;
+                    therefore, as \(x\) approaches infinity, \(f(x)\) tries to make the quotient \(f(x)/g(x)\) go to infinity,
+                    while \(g(x)\) tries to make the quotient decay to \(0.\)
+                    Because the quotient \(f(x)/g(x)\) approaches infinity, \(f(x)\) overpowers \(g(x),\) forcing the quotient to tend to infinity.
+                    Additionally, had we instead let \(f(x) = \ln(x)\) and \(g(x) = x^{1/5},\) 
+                    then \(L\) would have been \(0\) and we would have concluded that \(g(x) = x^{1/5}\) grew faster. 
+                </p>
+
+                <br>
+
+                <!-- relative rates box -->
+                <div class="box-title"> RELATIVE RATES </div>
+                <div class="box">
+                    <p>
+                        Let \(\ds L = \lim_{x \to a} \frac{f(x)}{g(x)}.\)
+                    </p>
+                    <div class="list-item">
+                        <div class="list-number"> (a) </div>
+                        <div class="list-text">
+                            If \(L = \infty,\) then \(f(x)\) grows faster than \(g(x).\)
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> (b) </div>
+                        <div class="list-text">
+                            If \(L = 0,\) then \(g(x)\) grows faster than \(f(x).\) 
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> (c) </div>
+                        <div class="list-text">
+                            If \(L = k,\) where \(k \ne 0,\) then \(f(x)\) and \(g(x)\) grow at the same rate.
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--example 4-->
+                <div class="example-title"> EXAMPLE \(4\) </div>
+                <div class="example">
+                    <!--example 4 problem-->
+                    <div class="example-problem">  
+                        As \(x\) approaches infinity, 
+                        show that \(\ds f(x) = e^{-x}\) decays to \(0\) faster than \(\ds g(x) = 1/x.\)
+                    </div>
+                </div>
+                <button onclick="toggle4()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 4 solution-->
+                <div>
+                    <div id="solution4" class="solution">
+                        <p>
+                            We can set up a quotient of these two functions, \(f(x)/g(x),\)
+                            and take the limit as \(x\) goes to infinity. 
+                            In this case, if \(f(x)\) decays faster than \(g(x),\) 
+                            then the quotient \(f(x)/g(x)\) will tend to \(0.\) 
+                            Conversely, if \(g(x)\) decays faster than \(f(x),\) 
+                            then the quotient will go to infinity.
+                        </p>
+                        <p>
+                            We have 
+                            \[
+                            \ba 
+                            \lim_{x \to \infty} \frac{f(x)}{g(x)} &= \lim_{x \to \infty} \frac{e^{-x}}{1/x} \\
+                            &= \lim_{x \to \infty} \frac{x}{e^x}. \\
+                            \ea 
+                            \]
+                            Because the limit is in the indeterminate form \(\infty/\infty,\) 
+                            applying L'Hôpital's Rule gives 
+                            \[
+                            \ba 
+                            \lim_{x \to \infty} \frac{x}{e^x} &= \lim_{x \to \infty} \frac{1}{e^x} \\
+                            &= 0.
+                            \ea 
+                            \]
+                        </p>
+                        <p>
+                            Since the quotient \(f(x)/g(x)\) goes to \(0\) as \(x\) approaches infinity, we conclude that 
+                            \(f(x) = e^{-x}\) decays faster. 
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+
+                <p>
+                    Let us now discuss other indeterminate forms of limits, \(0 \times \infty, 0^0, 1^\infty,\) and \(\infty^0.\)
+                    These forms can be manipulated into the forms \(0/0\) and \(\pm \infty/\infty\)
+                    so that L'Hôpital's Rule can be used.
+                </p>
+
+                <br>
+
+                <p>
+                    For the form \(0 \times \infty,\) we will assignate the functions \(p\) and \(q.\) 
+                    If \(\ds \lim_{x \to a} p(x) = 0\) and \(\ds \lim_{x \to a} q(x) = \infty,\) 
+                    then \(\ds \lim_{x \to a} p(x) q(x)\) is in the form \(0 \times \infty.\)
+                    However, we can rewrite this limit as \(\ds \lim_{x \to a} \frac{p(x)}{1/q(x)},\) which is in the form \(0/0,\)
+                    or as \(\ds \lim_{x \to a} \frac{q(x)}{1/p(x)},\) which is in the form \(\infty/\infty.\)
+                    These algebraic manipulations force any limit in the form \(0 \times \infty\) into the forms \(0/0\) or \(\infty/\infty,\)
+                    for which we can use L'Hôpital's Rule.  
+                </p>
+
+                <br>
+
+                <p>
+                    As an example, consider the limit \(\ds \lim_{x \to 0^+} x \ln(x).\)
+                    Analytically, this limit represents a battle between \(x\) and \(\ln(x);\) 
+                    as \(x\) approaches \(0\) from the right-hand side, the term \(x\) forces the product \(x \ln(x)\) to \(0,\)
+                    while \(\ln(x)\) tries to push the product to negative infinity. 
+                    We can rewrite the limit as
+                    \[\lim_{x \to 0^+} \frac{\ln(x)}{1/x},\]
+                    which is in the indeterminate form \(\infty/\infty.\)
+                    Therefore, by L'Hôpital's Rule, we obtain 
+                    \[
+                    \ba
+                    \lim_{x \to 0^+} \frac{1/x}{-1/x^2} &= \lim_{x \to 0^+} (-x) \\
+                    &= 0.
+                    \ea
+                    \]
+                    This result tells us that, as \(x\) approaches \(0,\) 
+                    \(x\) is the stronger term—forcing the product \(x \ln(x)\) to approach \(0\) faster than \(\ln(x)\) forces the product to \(-\infty.\)
+                </p>
+
+                <br>
+
+                <!-- table for indeterminate form 0 * infty -->
+                <div class="steps-title"> INDETERMINATE FORM \(0 \times \infty\) </div>
+                <div class="steps">
+                    <p> 
+                        If \(\ds \lim_{x \to a} p(x) q(x)\) is in the indeterminate form \(0 \times \infty,\) 
+                        then:
+                    </p>
+                    <div class="list-item">
+                        <div class="list-number"> \((1)\) </div>
+                        <div class="list-text">
+                            Force \(\ds \lim_{x \to a} p(x) q(x)\) into the form \(0/0\) or \(\infty/\infty\)
+                            by rewriting it as the quotient
+                            \(\ds \lim_{x \to a} \frac{p(x)}{1/q(x)}\) 
+                            or \(\ds \lim_{x \to a} \frac{q(x)}{1/p(x)}.\) 
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> \((2)\) </div>
+                        <div class="list-text">
+                            Use L'Hôpital's Rule to evaluate the resulting indeterminate form. 
+                            Depending on which form is simplest, 
+                            decide whether to write the quotient to be in the form \(0/0\) or \(\infty/\infty.\)
+                            (There are some instances in which only one form yields a determinate answer.)
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--example 5-->
+                <div class="example-title"> EXAMPLE \(5\) </div>
+                <div class="example">
+                    <!--example 5 problem-->
+                    <div class="example-problem">  
+                        Evaluate \(\ds \lim_{x \to -\infty} xe^{x}\) or state that it does not exist.
+                    </div>
+                </div>
+                <button onclick="toggle5()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 5 solution-->
+                <div>
+                    <div id="solution5" class="solution">
+                        <p>
+                            We notice that the limit \(\ds \lim_{x \to -\infty} xe^{x}\) is in the indeterminate form \(0 \times \infty.\)
+                            However, we can algebraically manipulate the limit into a quotient by writing it as 
+                            \[
+                            \lim_{x \to -\infty} xe^{x} = \lim_{x \to -\infty} \frac{x}{1/e^x}, \\
+                            \]
+                            which is in the form \(\infty/\infty.\)
+                            Therefore, utilizing L'Hôpital's Rule, we have 
+                            \[
+                            \ba
+                            &= \lim_{x \to -\infty} \frac{1}{-1/e^x} \\
+                            &= \lim_{x \to -\infty} -e^x \\
+                            &= \box{0.}
+                            \ea
+                            \]
+                        </p>
+                        <p>
+                            However, if we wrote the quotient as 
+                            \[\lim_{x \to -\infty} \frac{e^x}{1/x},\]
+                            which is in a \(0/0\) form, then L'Hôpital's Rule would give 
+                            \[\lim_{x \to -\infty} \frac{e^x}{-1/x^2},\]
+                            and further applications of L'Hôpital's Rule would give
+                            \(\ds \lim_{x \to -\infty} \frac{e^x}{2/x^3}, \lim_{x \to -\infty} \frac{e^x}{-6/x^4}, \dots,\)
+                            leading nowhere because repeated iterations would still be in indeterminate forms. 
+                            This problem shows that only one choice, writing the quotient as \(\infty/\infty,\)
+                            yields a determinate answer.
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+
+                <p>
+                    The last types of indeterminate forms are \(0^0, 1^\infty,\) and \(\infty^0.\)
+                    To convert these forms to the form \(0/0\) or \(\infty/\infty,\) 
+                    we need to utilize logarithms. 
+                    Let \(p(x)\) and \(q(x)\) be differentiable functions, and let \(y = p(x)^{q(x)}.\)
+                    If \(\ds \lim_{x \to a} y\) is in an indeterminate form \(0^0, 1^\infty,\) or \(\infty^0,\)
+                    then the strategy we will use involves re-expressing 
+                    \[\lim_{x \to a} y = \lim_{x \to a} p(x)^{q(x)}\]
+                    as 
+                    \[
+                    \ba
+                    \lim_{x \to a} \ln(y) &= \lim_{x \to a} \ln\left(p(x)^{q(x)}\right) \\
+                    &= \lim_{x \to a} q(x) \ln p(x),
+                    \ea
+                    \]
+                    which can be manipulated into a quotient of the indeterminate form \(0/0\) or \(\infty/\infty,\)
+                    as appropriate.
+                </p>
+
+                <br>
+                
+                <p>
+                    Consider, as an example, the limit \(\ds \lim_{x \to 0^+} x^{1/x}.\)
+                    We notice that, as \(x\) approaches \(0,\) 
+                    the base tends to \(0\) and the exponent tends to infinity.
+                    Thus, this limit is in the indeterminate form \(0^\infty.\)
+                    First, let \(y = x^{1/x}.\) 
+                    Then, 
+                    \[
+                    \ba
+                    \ln(y) &= \ln \left(x^{1/x}\right) \\
+                    &= \frac{1}{x} \ln(x) \\
+                    \lim_{x \to 0^+} \ln(y) &= \lim_{x \to 0^+} \frac{\ln(x)}{x} \\
+                    &= -\infty.
+                    \ea
+                    \]
+                    Therefore, because 
+                    \(\ds \lim_{x \to 0^+} \ln(y) = -\infty,\) 
+                    it follows that \(\ds \box{\lim_{x \to 0^+} y = e^{-\infty} = 0.}\)
+                </p>
+
+                
+                <br>
+
+                <!-- table for indeterminate forms w/ exponents -->
+                <div class="steps-title"> INDETERMINATE FORMS WITH EXPONENTS </div>
+                <div class="steps">
+                    <p> 
+                        If \(\ds \lim_{x \to a} p(x)^{q(x)}\) is in the indeterminate form \(0^0, 1^{\infty},\) or \(\infty^0,\)
+                        then: 
+                    </p>
+                    <div class="list-item">
+                        <div class="list-number"> \((1)\) </div>
+                        <div class="list-text">
+                            Let \(y = p(x)^{q(x)}.\)
+                            It then follows that \(\ds \ln(y) = q(x) \ln\left(p(x)\right).\)
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> \((2)\) </div>
+                        <div class="list-text">
+                            Consider \(\ds L = \lim_{x \to a} \ln(y).\)
+                            You may need to algebraically manipulate the limit into the indeterminate forms \(0/0\)
+                            or \(\infty/\infty\) and use L'Hôpital's Rule.
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-number"> \((3)\) </div>
+                        <div class="list-text">
+                            \(\ds \lim_{x \to a} y = e^L.\)
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--example 6-->
+                <div class="example-title"> EXAMPLE \(6\) </div>
+                <div class="example">
+                    <!--example 6 problem-->
+                    <div class="example-problem">  
+                        Evaluate \(\ds \lim_{x \to 0} \Big(3e^{2x} - 2\Big)^{1/({2x^2 - 5x})} \) or state that it does not exist.
+                    </div>
+                </div>
+                <button onclick="toggle6()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 6 solution-->
+                <div>
+                    <div id="solution6" class="solution">
+                        <p>
+                            This limit is in the indeterminate form \(1^\infty.\)
+                            We will let 
+                            \[y = \Big(3e^{2x} - 2\Big)^{1/({2x^2 - 5x})}. \]
+                            Then,
+                            \[
+                            \ba 
+                            \ln(y) &= \ln \left( \left( 3e^{2x} - 2 \right)^{1/({2x^2 - 5x})} \right) \\
+                            &= \frac{1}{2x^2 - 5x} \ln \left( 3e^{2x} - 2 \right). \\
+                            \lim_{x \to 0} \ln(y) &= \lim_{x \to 0} \frac{1}{2x^2 - 5x} \ln \left( 3e^{2x} - 2 \right). \\
+                            \ea
+                            \]
+                            The limit \(\ds \lim_{x \to 0} \ln(y)\) is in the indeterminate form \(0/0,\)
+                            so we can apply L'Hôpital's Rule to obtain 
+                            \[
+                            \ba
+                            \lim_{x \to 0} \ln(y) &= \lim_{x \to 0} \frac{6e^{2x} \cdot \dfrac{1}{3e^{2x} - 2}}{4x - 5} \\
+                            &= -6/5. \\
+                            \ea
+                            \]
+                        </p>
+                        <p>
+                            Because \(\ds \lim_{x \to 0} \ln(y) = -6/5,\) it follows that 
+                            \(\ds \box{\lim_{x \to 0} y = e^{-6/5}.}\)
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+
+                <!--example 7-->
+                <div class="example-title"> EXAMPLE \(7\) </div>
+                <div class="example">
+                    <!--example 7 problem-->
+                    <div class="example-problem">  
+                        Evaluate \(\ds \lim_{x \to \infty} (\ln x)^{1/x} \) or state that it does not exist.
+                    </div>
+                </div>
+                <button onclick="toggle7()" class="solution-button"> SHOW SOLUTION ▼ </button>
+                <!--example 7 solution-->
+                <div>
+                    <div id="solution7" class="solution">
+                        <p>
+                            This limit is in the indeterminate form \(\infty^0.\)
+                            First, let 
+                            \[y = \left(\ln x \right)^{1/x}.\]
+                            It then follows that 
+                            \[
+                            \ba
+                            \ln(y) &= \frac{1}{x} \ln \left(\ln x \right) \\
+                            \lim_{x \to \infty} \ln(y) &= \lim_{x \to \infty} \frac{1}{x} \ln \left(\ln x \right). \\
+                            \ea
+                            \]
+                            Considering \(\ds \lim_{x \to \infty} \ln(y)\) is useful because it produces 
+                            \(\ds \lim_{x \to \infty} \frac{\ln \left(\ln x \right)}{x},\) 
+                            which is in the indeterminate form \(\infty/\infty.\)
+                            Therefore, applying L'Hôpital's Rule rule gives 
+                            \[
+                            \ba
+                            \lim_{x \to \infty} \ln(y) &= \lim_{x \to \infty} \frac{\frac{1}{x\ln(x)}}{1} \\
+                            &= 0.
+                            \ea 
+                            \]
+                            Therefore, since \(\ds \lim_{x \to \infty} \ln(y) = 0,\) 
+                            it follows that \(\ds \box{\lim_{x \to \infty} y = e^0 = 1.}\)
+                        </p>
+                    </div>
+                </div>
+
+                <br>
+
+                <p>
+                    It is important to note that there are some cases in which L'Hôpital's Rule fails.
+                    Consider, as an example, the limit \(\ds \lim_{x \to \infty} \cos(x)/x,\)
+                    which is in the indeterminate form \(0/0.\)
+                    If we attempt to apply L'Hôpital's Rule, then we obtain 
+                    \(\ds \lim_{x \to \infty} -\sin(x).\) 
+                    This limit does not exist because \(\sin(x)\) oscillates and never settles to a final value. 
+                    Therefore, L'Hôpital's Rule failed to provide us with an answer. 
+                    Instead, because \(\ds -1 \leq \cos(x) \leq 1, \) we can set up the inequality
+                    \[ 
+                    \ba
+                    -1 &\leq \cos(x) \leq 1 \\
+                    -\frac{1}{x} &\leq \frac{\cos(x)}{x} \leq \frac{1}{x}.
+                    \ea
+                    \]
+                    Taking limits, we get
+                    \[ 
+                    \ba
+                    \lim_{x \to \infty} {-\frac{1}{x}} \leq &\lim_{x \to \infty} \frac{\cos(x)}{x} \leq \lim_{x \to \infty} \frac{1}{x} \\
+                    0 \leq &\lim_{x \to \infty} \frac{\cos(x)}{x} \leq 0. \\
+                    \ea
+                    \]
+                    Therefore, by the Squeeze Theorem, \(\ds \lim_{x \to \infty} \cos(x)/x = 0.\)
+                </p>
+
+                <br>
+
+                <p>
+                    As another example, consider the limit 
+                    \( \ds \lim_{x \to \infty} \frac{\sqrt{x^2 - 1}}{x},\)
+                    which is in the indeterminate form \(\infty/\infty.\)
+                    If we attempt to apply L'Hôpital's Rule, then we obtain 
+                    \[\lim_{x \to \infty} \frac{\frac{x}{\sqrt{x^2 - 1}}}{1} = \lim_{x \to \infty} \frac{x}{\sqrt{x^2 - 1}},\]
+                    which is still in the indeterminate form \(\infty/\infty.\)
+                    However, applying L'Hôpital's Rule again gives 
+                    \[\lim_{x \to \infty} \frac{\sqrt{x^2 - 1}}{x},\]
+                    which is a repeat of our original limit. 
+                    This pattern places us in a never-ending cycle of the indeterminate form \(\infty/\infty,\) never leading to a final value.
+                    However, using algebra, 
+                    \[
+                    \ba
+                    \lim_{x \to \infty} \frac{\sqrt{x^2 - 1}}{x} &= \lim_{x \to \infty} \sqrt{\frac{x^2 - 1}{x^2}} \\
+                    &= \lim_{x \to \infty} \sqrt{1 - \frac{1}{x^2}} \\
+                    &= \box{1.}
+                    \ea
+                    \]
+                    These examples show that L'Hôpital's Rule occasionally fails to provide an answer, 
+                    and we therefore cannot always rely on it. 
+                    It is important to be able to resort to other methods for cases in which L'Hôpital's Rule fails. 
+                </p>
+
+                <br>
+
+                <div class="section-summary__title"> SECTION SUMMARY </div>
+                <div class="section-summary">
+                    <ul>
+                        <li class="summary-list-item__top"> 
+                            L'Hôpital's Rule states that if \(f(x)\) and \(g(x)\) are both differentiable and \(g'(x) \ne 0\) 
+                            on an open interval \(I\) (except possibly at \(x = a, a \in I\)), 
+                            and \(\ds \lim_{x \to a} f(x)\) and \(\ds \lim_{x \to a} g(x)\) are both \(0\) or \(\pm \infty,\)
+                            then \(\ds \lim_{x \to a} f(x)/g(x) = \lim_{x \to a} f'(x)/g'(x).\)
+                        </li>
+                        <li class="summary-list-item">
+                            L'Hôpital's Rule applies to one-sided limits and limits at infinity.
+                        </li>
+                        <li class="summary-list-item">
+                            <u>Do NOT</u> use the quotient rule when applying L'Hôpital's Rule!
+                            Differentiate the numerator and denominator separately—this procedure is unrelated to the quotient rule.
+                        </li>
+                        <li class="summary-list-item">
+                            <p>
+                                Let \(\ds L = \lim_{x \to a} \frac{f(x)}{g(x)}.\)
+                            </p>
+                            <div class="list-item">
+                                <div class="list-number"> (a) </div>
+                                <div class="list-text">
+                                    If \(L = \infty,\) then \(f(x)\) grows faster than \(g(x).\)
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <div class="list-number"> (b) </div>
+                                <div class="list-text">
+                                    If \(L = 0,\) then \(g(x)\) grows faster than \(f(x).\) 
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <div class="list-number"> (c) </div>
+                                <div class="list-text">
+                                    If \(L = k,\) where \(k \ne 0,\) then \(f(x)\) and \(g(x)\) grow at the same rate.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="summary-list-item">
+                            If \(\ds \lim_{x \to a} p(x)q(x)\) is in the indeterminate form \(0 \times \infty,\) 
+                            then the limit can be rewritten as 
+                            \(\ds \lim_{x \to a} \frac{p(x)}{1/q(x)}\) or \(\ds \lim_{x \to a} \frac{q(x)}{1/p(x)}.\)
+                            The limits of these quotients are either in the indeterminate form \(0/0\) or \(\ds \infty/\infty,\)
+                            for which L'Hôpital's Rule can be used.
+                        </li>
+                        <li class="summary-list-item">
+                            If \(\ds \lim_{x \to a} p(x)^{q(x)}\) is in the indeterminate form \(0^0, 1^{\infty},\) or \(\infty^0,\)
+                            then let \(y = p(x)^{q(x)}.\) 
+                            It then follows that \(\ln(y) = q(x) \ln \left(p(x)\right).\) 
+                            Consider \(\ds \lim_{x \to a} \ln(y),\) which will be in either of the indeterminate forms 
+                            \(0/0,\) \(\infty/\infty,\) or \(0 \times \infty.\)
+                        </li>
+                        <li class="summary-list-item">
+                            Be aware of cases in which L'Hôpital's Rule fails. 
+                            Ensure that you can use other procedures for evaluating indeterminate limits as a backup.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+    </body>
+    <footer>
+        <div class="footer-sections">
+            <div class="footer-logo">
+                <div style="padding-bottom: 10%;"> VAL <br> CALC </div>
+                <a href="https://discord.gg/CbXg72x9Q9"> <img src="../images/discord-icon.png" class="footer-image-icon" alt=""> </a>
+                <img src="../images/paypal-icon.png" class="footer-image-icon" alt="">
+                <img src="../images/venmo-icon.png" class="footer-image-icon venmo-icon" alt="">
+            </div>
+            <div class="footer-nav-column">
+                <ul class="footer-nav-column__ul">
+                    <li>
+                        <a class="footer-link" href="../index.html">Home</a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../about.html">About</a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../faq.html">FAQ</a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../contact.html">Contact</a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../contact.html">Discord</a> 
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-nav-column">
+                <ul class="footer-nav-column__ul">
+                    <li>
+                        <a class="footer-link" href="../index.html"> Section Notes </a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../faq.html"> AP® Calculus  </a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../faq.html"> Before Taking Calculus  </a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../faq.html"> Practice Tests  </a> 
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-nav-column">
+                <ul class="footer-nav-column__ul">
+                    <li>
+                        <a class="footer-link" href="../index.html">Report a Problem</a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../about.html"> Terms of Use </a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../faq.html">Privacy Policy</a> 
+                    </li>
+                    <li>
+                        <a class="footer-link" href="../contact.html">Donate</a> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <p class="ap-notice">
+        AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this website.
+    </p>
+    </footer>
+
+    <script src="../js/hamburger-menu.js"></script>
+    <script src="../js/toggle-solutions.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+</html>
